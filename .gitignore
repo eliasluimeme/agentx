@@ -1,0 +1,17 @@
+node_modules
+.next
+out
+dist
+build
+.env
+.env.local
+.env.production
+*.log
+.DS_Store
+.turbo
+.prisma
+coverage
+
+ui inspiration/
+ui/inspiration/
+AGENTX-UI-SKILL.md
