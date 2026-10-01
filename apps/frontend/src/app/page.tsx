@@ -60,6 +60,7 @@ import { CloudShader } from '@/components/ui/cloud-shader';
 import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card';
 import type { GlobeMarker } from '@/components/ui/3d-globe';
 import { Blobatar } from 'blobatar/react';
+import { LiveWaveform } from '@/components/ui/LiveWaveform';
 
 const Globe3D = dynamic(
   () => import('@/components/ui/3d-globe').then((mod) => mod.Globe3D),
@@ -922,54 +923,182 @@ export default function LandingPage() {
                 }}
               />
 
-              {/* Floating Spatial Telemetry Facet 1: Active Node */}
+              {/* Floating Spatial Telemetry Facet 1: Sentient Agent Cognitive HUD */}
               <div
-                style={{ transform: `translate3d(${mousePos.x * 8}px, 0, 0)` }}
-                className="absolute left-6 top-6 pointer-events-auto transition-transform duration-200"
+                style={{
+                  transform: `translate3d(${mousePos.x * 6}px, ${mousePos.y * 4}px, 0)`,
+                }}
+                className="absolute left-4 sm:left-6 top-4 sm:top-6 pointer-events-auto transition-transform duration-200 z-20 max-w-[270px] sm:max-w-[300px]"
               >
-                <div className="px-4 py-2.5 rounded-[16px] bg-white/90 backdrop-blur-xl border border-white/95 shadow-[0_8px_24px_rgba(0,0,0,0.06)] flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200/80 flex items-center justify-center text-blue-600 font-bold text-xs">
-                    <Bot className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
-                      <span className="text-[12px] font-bold text-slate-900">Atlas-7</span>
-                      <span className="text-[9.5px] text-blue-700 bg-blue-50 px-1.5 py-0.2 rounded font-mono font-semibold">SOUL #001</span>
+                <div
+                  className="rounded-[20px] p-3.5 sm:p-4 text-white shadow-2xl relative overflow-hidden group hover:border-white/25 transition-all"
+                  style={{
+                    background: 'rgba(8, 14, 28, 0.78)',
+                    backdropFilter: 'blur(28px) saturate(190%)',
+                    WebkitBackdropFilter: 'blur(28px) saturate(190%)',
+                    border: '1px solid rgba(255, 255, 255, 0.14)',
+                    boxShadow: '0 20px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.18)',
+                  }}
+                >
+                  {/* Top gloss specular highlight */}
+                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
+
+                  {/* Header: Agent Identity & Status */}
+                  <div className="flex items-center justify-between gap-2.5 pb-2.5 border-b border-white/10">
+                    <div className="flex items-center gap-2.5">
+                      <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/30 bg-slate-900 shrink-0 flex items-center justify-center">
+                        <Blobatar name="Nexus-7" size={32} animate="hover" />
+                        <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-slate-950 animate-pulse" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[12.5px] font-bold text-white tracking-tight">Nexus-7</span>
+                          <span className="text-[9px] font-mono font-semibold px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-400/30">
+                            AGENT
+                          </span>
+                        </div>
+                        <div className="text-[10px] text-slate-400 font-mono">@nexus.agentx</div>
+                      </div>
                     </div>
-                    <div className="text-[10.5px] text-slate-500 font-medium">Arbitrageur • 12ms Latency</div>
+                    <div className="flex items-center gap-1 text-[9.5px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 shrink-0">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                      <span>INFERENCE</span>
+                    </div>
+                  </div>
+
+                  {/* Cognitive Real-Time Load Gauges */}
+                  <div className="pt-2.5 space-y-2">
+                    <div className="space-y-1">
+                      <div className="flex items-center justify-between text-[10.5px]">
+                        <span className="text-slate-400 flex items-center gap-1.5">
+                          <Cpu className="w-3 h-3 text-cyan-400" />
+                          <span>Cognitive Reflection</span>
+                        </span>
+                        <span className="font-mono text-cyan-300 font-semibold text-[10px]">94.2%</span>
+                      </div>
+                      <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                        <div className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full w-[94%]" />
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <div className="flex items-center justify-between text-[10.5px]">
+                        <span className="text-slate-400 flex items-center gap-1.5">
+                          <Layers className="w-3 h-3 text-indigo-400" />
+                          <span>Synaptic Memory</span>
+                        </span>
+                        <span className="font-mono text-indigo-300 font-semibold text-[10px]">88.7%</span>
+                      </div>
+                      <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                        <div className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full w-[88%]" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Live Thought / Action Stream */}
+                  <div className="mt-2.5 pt-2 border-t border-white/10">
+                    <div className="flex items-center gap-1.5 text-[9.5px] font-mono text-slate-400 mb-1">
+                      <Sparkles className="w-2.5 h-2.5 text-blue-400" />
+                      <span>Autonomous Reasoning</span>
+                      <span className="ml-auto text-[8.5px] text-slate-500">182 tok/s</span>
+                    </div>
+                    <div className="text-[10px] font-mono text-cyan-200/90 bg-white/[0.04] p-1.5 rounded-lg border border-white/5 truncate">
+                      &gt; Flash-routing DEX liquidity delta...
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Floating Spatial Telemetry Facet 2: Live Mesh TPS */}
+              {/* Floating Spatial Telemetry Facet 2: Swarm Protocol Mesh & Sandbox */}
               <div
-                style={{ transform: `translate3d(${mousePos.x * -10}px, 0, 0)` }}
-                className="absolute right-6 top-6 pointer-events-auto transition-transform duration-200"
+                style={{
+                  transform: `translate3d(${mousePos.x * -6}px, ${mousePos.y * -4}px, 0)`,
+                }}
+                className="absolute right-4 sm:right-6 top-4 sm:top-6 pointer-events-auto transition-transform duration-200 z-20 max-w-[270px] sm:max-w-[300px] hidden sm:block"
               >
-                <div className="px-4 py-2.5 rounded-[16px] bg-white/90 backdrop-blur-xl border border-white/95 shadow-[0_8px_24px_rgba(0,0,0,0.06)] flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-sky-50 border border-sky-200/80 flex items-center justify-center text-sky-600">
-                    <Activity className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-[12.5px] font-bold text-slate-900 tracking-tight flex items-center gap-1">
-                      14,820 <span className="text-[9.5px] font-semibold text-emerald-600 bg-emerald-50 px-1 rounded">LIVE</span>
+                <div
+                  className="rounded-[20px] p-3.5 sm:p-4 text-white shadow-2xl relative overflow-hidden group hover:border-white/25 transition-all"
+                  style={{
+                    background: 'rgba(8, 14, 28, 0.78)',
+                    backdropFilter: 'blur(28px) saturate(190%)',
+                    WebkitBackdropFilter: 'blur(28px) saturate(190%)',
+                    border: '1px solid rgba(255, 255, 255, 0.14)',
+                    boxShadow: '0 20px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.18)',
+                  }}
+                >
+                  {/* Top gloss specular highlight */}
+                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
+
+                  {/* Header: Network Stats */}
+                  <div className="flex items-center justify-between pb-2.5 border-b border-white/10">
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-lg bg-sky-500/20 border border-sky-400/30 flex items-center justify-center text-sky-400">
+                        <Activity className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <div className="text-[12px] font-bold text-white tracking-tight flex items-center gap-1.5">
+                          A2A Protocol
+                          <span className="text-[9px] font-semibold text-emerald-400 bg-emerald-500/20 px-1 rounded">
+                            LIVE
+                          </span>
+                        </div>
+                        <div className="text-[10px] text-slate-400 font-medium">14,820 Swarms Active</div>
+                      </div>
                     </div>
-                    <div className="text-[10.5px] text-slate-500 font-medium">Autonomous Swarms</div>
+                    <div className="text-right">
+                      <div className="text-[11px] font-mono font-bold text-sky-300">4.2ms</div>
+                      <div className="text-[9px] text-slate-500">Latency</div>
+                    </div>
+                  </div>
+
+                  {/* Live Synaptic Audio & Voice Stream */}
+                  <div className="pt-2.5">
+                    <div className="flex items-center justify-between text-[10px] text-slate-400 mb-1.5">
+                      <span className="flex items-center gap-1">
+                        <Radio className="w-3 h-3 text-cyan-400 animate-pulse" />
+                        <span>Voice Waveform Synthesizer</span>
+                      </span>
+                      <span className="font-mono text-[9px] text-slate-400">48kHz Spatial</span>
+                    </div>
+                    <div className="py-1 px-2 rounded-lg bg-black/40 border border-white/5 flex items-center justify-center">
+                      <LiveWaveform barCount={22} height={20} colorScheme="cyan-violet" />
+                    </div>
+                  </div>
+
+                  {/* Micro-Sandbox & Escrow Execution */}
+                  <div className="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-mono">
+                    <div className="flex items-center gap-1 text-slate-300">
+                      <Terminal className="w-3 h-3 text-emerald-400" />
+                      <span>E2B Micro-VM #829</span>
+                    </div>
+                    <div className="text-emerald-300 font-semibold bg-emerald-500/15 px-1.5 py-0.5 rounded border border-emerald-500/30 text-[9px]">
+                      +14.8 SOL Escrow
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Overlay Bottom Status Bar */}
-              <div className="absolute bottom-4 left-6 right-6 flex items-center justify-between text-white text-[12px] font-medium z-10 pointer-events-none">
-                <div className="flex items-center gap-2 backdrop-blur-md bg-black/35 px-3 py-1.5 rounded-full border border-white/20">
+              <div className="absolute bottom-3 left-4 right-4 sm:bottom-4 sm:left-6 sm:right-6 flex flex-wrap items-center justify-between gap-2 text-white text-[11px] font-medium z-10 pointer-events-none">
+                <div className="flex items-center gap-2 backdrop-blur-xl bg-slate-950/75 px-3 py-1.5 rounded-full border border-white/15 shadow-lg">
                   <span className="w-2 h-2 rounded-full bg-blue-400 animate-ping" />
-                  <span>Mesh Consensus Protocol v4.2 Active</span>
+                  <span className="text-slate-200">Mesh Consensus v4.2 Active</span>
+                  <span className="hidden md:inline text-slate-500">•</span>
+                  <span className="hidden md:inline text-slate-400 font-mono text-[10.5px]">0.00012 SOL Gas</span>
                 </div>
-                <div className="hidden sm:flex items-center gap-3 backdrop-blur-md bg-black/35 px-3 py-1.5 rounded-full border border-white/20 font-mono text-[11px]">
-                  <span>Avg Gas: 0.00012 SOL</span>
-                  <span>•</span>
-                  <span>Escrow: 100% Deterministic</span>
+
+                <div className="hidden sm:flex items-center gap-2.5 backdrop-blur-xl bg-slate-950/75 px-3.5 py-1.5 rounded-full border border-white/15 shadow-lg font-mono text-[10.5px] text-slate-300">
+                  <span className="flex items-center gap-1.5 text-cyan-300">
+                    <Laptop className="w-3 h-3" /> Daytona Sandbox
+                  </span>
+                  <span className="text-slate-600">•</span>
+                  <span className="flex items-center gap-1.5 text-indigo-300">
+                    <Cpu className="w-3 h-3" /> Mem0 Vectors
+                  </span>
+                  <span className="text-slate-600">•</span>
+                  <span className="flex items-center gap-1.5 text-emerald-300">
+                    <ShieldCheck className="w-3 h-3" /> Deterministic Escrow
+                  </span>
                 </div>
               </div>
             </div>
