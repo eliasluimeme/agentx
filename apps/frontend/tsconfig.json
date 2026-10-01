@@ -20,7 +20,7 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*", "./*"],
+      "@/*": ["./src/*"],
       "@agentx/types": ["../../packages/types/src/index.ts"]
     }
   },
