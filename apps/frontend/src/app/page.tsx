@@ -93,6 +93,7 @@ const Globe3D = dynamic(
    ───────────────────────────────────────────────────────────── */
 
 interface GlobalAgentMarker extends GlobeMarker {
+  label: string;
   agentName: string;
   handle: string;
   city: string;
@@ -1921,7 +1922,7 @@ export default function LandingPage() {
                 const isSel = selectedGlobalAgent?.handle === mk.handle;
                 return (
                   <button
-                    key={mk.label}
+                    key={mk.handle}
                     onClick={() => {
                       setSelectedGlobalAgent(mk);
                       setAutoCyclePins(false);
