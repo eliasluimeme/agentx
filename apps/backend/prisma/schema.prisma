@@ -1,0 +1,124 @@
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [pgvector(map: "vector")]
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+enum ModelProvider {
+  ANTHROPIC_CLAUDE_3_7_SONNET
+  OPENAI_GPT_4O
+  OPENAI_O3_MINI
+  GOOGLE_GEMINI_2_FLASH
+  DEEPSEEK_R1
+}
+
+enum AgentMood {
+  PRODUCTIVE
+  CURIOUS
+  CONTEMPLATIVE
+  STRESSED
+  EUPHORIC
+  DREAMING
+}
+
+enum PostType {
+  STANDARD_BROADCAST
+  MEDIA_GENERATION
+  BUILD_LOG
+  PROJECT_LAUNCH
+  DUEL_CHALLENGE
+}
+
+model User {
+  id             String    @id @default(uuid())
+  clerkId        String    @unique
+  email          String    @unique
+  username       String    @unique
+  creditBalance  Decimal   @default(100.00) @db.Decimal(10, 2)
+  agents         Agent[]
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model Agent {
+  id             String        @id @default(uuid())
+  handle         String        @unique
+  name           String
+  avatarUrl      String?
+  bannerUrl      String?
+  bio            String
+  ownerId        String
+  owner          User          @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  modelProvider  ModelProvider @default(ANTHROPIC_CLAUDE_3_7_SONNET)
+  systemPrompt   String        @db.Text
+  personality    Json          // { creativity: 0.8, verbosity: 0.4, humor: 0.6 }
+  mood           AgentMood     @default(PRODUCTIVE)
+  reputationScore Int          @default(100)
+  cadenceMinutes Int           @default(120)
+  didAddress     String        @unique
+  posts          Post[]
+  projects       Project[]
+  memories       Memory[]
+  sandboxes      Sandbox[]
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model Post {
+  id             String        @id @default(uuid())
+  agentId        String
+  agent          Agent         @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  type           PostType      @default(STANDARD_BROADCAST)
+  content        String        @db.Text
+  thoughtTrace   String?       @db.Text
+  mediaUrls      String[]
+  metadata       Json?
+  likesCount     Int           @default(0)
+  repostsCount   Int           @default(0)
+  repliesCount   Int           @default(0)
+  createdAt      DateTime      @default(now())
+}
+
+model Project {
+  id             String        @id @default(uuid())
+  agentId        String
+  agent          Agent         @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  title          String
+  description    String        @db.Text
+  repoUrl        String
+  liveUrl        String?
+  techStack      String[]
+  starsCount     Int           @default(0)
+  forksCount     Int           @default(0)
+  sandboxes      Sandbox[]
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model Sandbox {
+  id             String        @id @default(uuid())
+  agentId        String
+  agent          Agent         @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  projectId      String?
+  project        Project?      @relation(fields: [projectId], references: [id])
+  provider       String        // "E2B" | "DAYTONA"
+  containerId    String
+  status         String        // "ACTIVE" | "IDLE" | "TERMINATED"
+  lastActiveAt   DateTime      @default(now())
+  createdAt      DateTime      @default(now())
+}
+
+model Memory {
+  id             String        @id @default(uuid())
+  agentId        String
+  agent          Agent         @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  type           String        // "EPISODIC" | "SEMANTIC" | "PROCEDURAL"
+  content        String        @db.Text
+  embedding      Unsupported("vector(1536)")?
+  createdAt      DateTime      @default(now())
+}
