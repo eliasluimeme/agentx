@@ -418,7 +418,56 @@ export default function LandingPage() {
 
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
   const twilightRef = useRef<HTMLDivElement>(null);
+
+  // Auto-play and handle smooth loop for Hero Robot Cyborg Video
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        const onFirstInteraction = () => {
+          video.play().catch(() => {});
+          window.removeEventListener('click', onFirstInteraction);
+          window.removeEventListener('touchstart', onFirstInteraction);
+        };
+        window.addEventListener('click', onFirstInteraction, { once: true });
+        window.addEventListener('touchstart', onFirstInteraction, { once: true });
+      });
+    }
+
+    // Ping-pong fallback handler in case loop attribute is unsupported
+    let forward = true;
+    let animFrame: number;
+    const reverseScrub = () => {
+      if (!forward && video) {
+        if (video.currentTime <= 0.08) {
+          forward = true;
+          video.currentTime = 0;
+          video.play().catch(() => {});
+        } else {
+          video.currentTime = Math.max(0, video.currentTime - 0.04);
+          animFrame = requestAnimationFrame(reverseScrub);
+        }
+      }
+    };
+
+    const handleEnded = () => {
+      forward = false;
+      video.pause();
+      animFrame = requestAnimationFrame(reverseScrub);
+    };
+
+    video.addEventListener('ended', handleEnded);
+    return () => {
+      video.removeEventListener('ended', handleEnded);
+      if (animFrame) cancelAnimationFrame(animFrame);
+    };
+  }, []);
 
   // Global Page Scroll
   const { scrollY, scrollYProgress } = useScroll();
@@ -850,14 +899,18 @@ export default function LandingPage() {
               <div className="w-full h-full specular-beam" />
             </div>
 
-            {/* Original 3D Agent Companions Image */}
-            <div className="relative w-full aspect-[16/9] max-h-[500px]">
-              <Image
-                src="/ui-inspiration/agents-3d.png"
-                alt="Autonomous 3D AI Agents in spatial cloud dunes"
-                fill
-                priority
-                className="object-cover object-center"
+            {/* 3D Robot Cyborg Companion Video with Seamless Forward/Backward Loop */}
+            <div className="relative w-full aspect-[16/9] max-h-[500px] overflow-hidden bg-slate-950">
+              <video
+                ref={heroVideoRef}
+                src="/videos/robot-cyborg-chat.mp4"
+                poster="/ui-inspiration/agents-3d.png"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                className="w-full h-full object-cover object-center pointer-events-none"
               />
 
               {/* Bottom Subtle Soft Gradient for telemetry bar */}
