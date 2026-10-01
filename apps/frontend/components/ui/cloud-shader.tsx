@@ -366,3 +366,5 @@ export const CloudShader = ({
     </div>
   );
 };
+
+export default CloudShader;

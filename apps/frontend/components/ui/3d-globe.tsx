@@ -4,6 +4,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, Html, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { cn } from "@/lib/utils";
+import { Blobatar } from "blobatar/react";
 
 // ============================================================================
 // Types
@@ -290,12 +291,11 @@ function Marker({
             onClick={handleClick}
           >
             {/* Avatar with Emerald Active Ping */}
-            <div className="relative w-6 h-6 rounded-full overflow-hidden shrink-0 border border-white/30 bg-slate-900 shadow-sm">
-              <img
-                src={marker.src}
-                alt={cityName}
-                className="h-full w-full object-cover"
-                draggable={false}
+            <div className="relative w-7 h-7 rounded-full overflow-hidden shrink-0 border border-white/30 bg-slate-900 shadow-sm flex items-center justify-center">
+              <Blobatar
+                name={marker.agentName || cityName}
+                size={28}
+                animate="hover"
               />
               <span className="absolute bottom-0 right-0 w-1.5 h-1.5 rounded-full bg-emerald-400 ring-1 ring-slate-950 animate-pulse" />
             </div>
@@ -338,6 +338,16 @@ const SWARM_ROUTES = [
   ["San Francisco", "New York"],
   ["London", "Zurich"],
   ["Singapore", "Sydney"],
+  ["Moscow", "Frankfurt"],
+  ["Mumbai", "Dubai"],
+  ["Istanbul", "London"],
+  ["Toronto", "New York"],
+  ["Johannesburg", "Dubai"],
+  ["São Paulo", "New York"],
+  ["Seoul", "Tokyo"],
+  ["Paris", "Zurich"],
+  ["Moscow", "Istanbul"],
+  ["Mumbai", "Singapore"],
 ];
 
 function SwarmArcs({ markers, radius }: SwarmArcsProps) {
