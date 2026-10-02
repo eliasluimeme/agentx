@@ -893,7 +893,7 @@ export default function LandingPage() {
         <div className="relative w-full mt-8 max-w-[1140px] mx-auto px-6 z-10">
           <motion.div
             style={{ y: heroImageY, scale: heroImageScale }}
-            className="relative rounded-[28px] overflow-hidden border border-white/90 bg-white/70 backdrop-blur-2xl shadow-[0_24px_70px_-15px_rgba(37,99,235,0.16)]"
+            className="relative rounded-[28px] overflow-hidden border border-white/95 bg-white/70 backdrop-blur-2xl shadow-[0_24px_70px_-15px_rgba(37,99,235,0.16),inset_0_1.5px_2px_rgba(255,255,255,0.95)]"
           >
             {/* Ambient specular beam sweep */}
             <div className="absolute top-0 left-0 right-0 h-[1.5px] overflow-hidden pointer-events-none z-20">
@@ -914,191 +914,118 @@ export default function LandingPage() {
                 className="w-full h-full object-cover object-center pointer-events-none"
               />
 
-              {/* Bottom Subtle Soft Gradient for telemetry bar */}
+              {/* Bottom Soft Translucent Horizon Gradient */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
                   background:
-                    'linear-gradient(180deg, rgba(255,255,255,0) 65%, rgba(15,23,42,0.6) 100%)',
+                    'linear-gradient(180deg, rgba(255,255,255,0) 55%, rgba(255,255,255,0.06) 75%, rgba(15,23,42,0.28) 100%)',
                 }}
               />
 
-              {/* Floating Spatial Telemetry Facet 1: Sentient Agent Cognitive HUD */}
+              {/* ─── Spatial Holographic HUD Framing (Apple iOS Liquid Glass) ─── */}
+              {/* 1. Camera Viewfinder Corner Brackets with Specular Hairline */}
+              <div className="absolute inset-4 sm:inset-6 pointer-events-none z-20 flex flex-col justify-between">
+                <div className="flex justify-between items-start">
+                  <div className="w-5 h-5 border-t-2 border-l-2 border-white/95 rounded-tl-[3px] backdrop-blur-[2px] drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)]" />
+                  <div className="w-5 h-5 border-t-2 border-r-2 border-white/95 rounded-tr-[3px] backdrop-blur-[2px] drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)]" />
+                </div>
+                <div className="flex justify-between items-end">
+                  <div className="w-5 h-5 border-b-2 border-l-2 border-white/95 rounded-bl-[3px] backdrop-blur-[2px] drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)]" />
+                  <div className="w-5 h-5 border-b-2 border-r-2 border-white/95 rounded-br-[3px] backdrop-blur-[2px] drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)]" />
+                </div>
+              </div>
+
+              {/* 2. Top-Left: Apple iOS Liquid Glass Status Capsule with Integrated Voice Wave */}
               <div
                 style={{
-                  transform: `translate3d(${mousePos.x * 6}px, ${mousePos.y * 4}px, 0)`,
+                  transform: `translate3d(${mousePos.x * 5}px, ${mousePos.y * 3}px, 0)`,
                 }}
-                className="absolute left-4 sm:left-6 top-4 sm:top-6 pointer-events-auto transition-transform duration-200 z-20 max-w-[270px] sm:max-w-[300px]"
+                className="absolute left-5 sm:left-8 top-5 sm:top-7 pointer-events-auto transition-transform duration-200 z-20 flex items-center"
               >
-                <div
-                  className="rounded-[20px] p-3.5 sm:p-4 text-white shadow-2xl relative overflow-hidden group hover:border-white/25 transition-all"
-                  style={{
-                    background: 'rgba(8, 14, 28, 0.78)',
-                    backdropFilter: 'blur(28px) saturate(190%)',
-                    WebkitBackdropFilter: 'blur(28px) saturate(190%)',
-                    border: '1px solid rgba(255, 255, 255, 0.14)',
-                    boxShadow: '0 20px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.18)',
-                  }}
-                >
-                  {/* Top gloss specular highlight */}
-                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
-
-                  {/* Header: Agent Identity & Status */}
-                  <div className="flex items-center justify-between gap-2.5 pb-2.5 border-b border-white/10">
-                    <div className="flex items-center gap-2.5">
-                      <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/30 bg-slate-900 shrink-0 flex items-center justify-center">
-                        <Blobatar name="Nexus-7" size={32} animate="hover" />
-                        <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-slate-950 animate-pulse" />
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-[12.5px] font-bold text-white tracking-tight">Nexus-7</span>
-                          <span className="text-[9px] font-mono font-semibold px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-400/30">
-                            AGENT
-                          </span>
-                        </div>
-                        <div className="text-[10px] text-slate-400 font-mono">@nexus.agentx</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-1 text-[9.5px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 shrink-0">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                      <span>INFERENCE</span>
-                    </div>
+                <div className="ios-glass-capsule group flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-slate-800 cursor-pointer">
+                  <div className="relative w-6 h-6 rounded-full overflow-hidden shrink-0 border border-white/95 bg-white/60 backdrop-blur-md flex items-center justify-center shadow-[0_2px_6px_rgba(0,0,0,0.08),inset_0_1px_1px_rgba(255,255,255,0.9)]">
+                    <Blobatar name="Nexus-7" size={24} animate="hover" />
                   </div>
-
-                  {/* Cognitive Real-Time Load Gauges */}
-                  <div className="pt-2.5 space-y-2">
-                    <div className="space-y-1">
-                      <div className="flex items-center justify-between text-[10.5px]">
-                        <span className="text-slate-400 flex items-center gap-1.5">
-                          <Cpu className="w-3 h-3 text-cyan-400" />
-                          <span>Cognitive Reflection</span>
-                        </span>
-                        <span className="font-mono text-cyan-300 font-semibold text-[10px]">94.2%</span>
-                      </div>
-                      <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                        <div className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full w-[94%]" />
-                      </div>
-                    </div>
-
-                    <div className="space-y-1">
-                      <div className="flex items-center justify-between text-[10.5px]">
-                        <span className="text-slate-400 flex items-center gap-1.5">
-                          <Layers className="w-3 h-3 text-indigo-400" />
-                          <span>Synaptic Memory</span>
-                        </span>
-                        <span className="font-mono text-indigo-300 font-semibold text-[10px]">88.7%</span>
-                      </div>
-                      <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                        <div className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full w-[88%]" />
-                      </div>
-                    </div>
+                  <div className="flex items-center gap-1.5 text-[12px]">
+                    <span className="font-bold text-slate-900 tracking-tight">Nexus-7</span>
+                    <span className="text-[10.5px] font-mono text-slate-500 font-semibold">182 t/s</span>
                   </div>
+                  <div className="w-[1px] h-3.5 bg-gradient-to-b from-white/90 via-slate-400/30 to-transparent" />
+                  <div className="flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-white/45 backdrop-blur-sm border border-white/60 shadow-[inset_0_1px_2px_rgba(0,0,0,0.04)]">
+                    <LiveWaveform barCount={12} height={12} colorScheme="cobalt" />
+                  </div>
+                  <span
+                    className="text-[9.5px] font-mono font-bold px-2 py-0.5 rounded-full text-emerald-800 tracking-wide"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.20) 0%, rgba(16, 185, 129, 0.08) 100%)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      border: '1px solid rgba(16, 185, 129, 0.35)',
+                      boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.65), 0 2px 6px -1px rgba(16, 185, 129, 0.15)',
+                    }}
+                  >
+                    LIVE
+                  </span>
+                </div>
+              </div>
 
-                  {/* Live Thought / Action Stream */}
-                  <div className="mt-2.5 pt-2 border-t border-white/10">
-                    <div className="flex items-center gap-1.5 text-[9.5px] font-mono text-slate-400 mb-1">
-                      <Sparkles className="w-2.5 h-2.5 text-blue-400" />
-                      <span>Autonomous Reasoning</span>
-                      <span className="ml-auto text-[8.5px] text-slate-500">182 tok/s</span>
-                    </div>
-                    <div className="text-[10px] font-mono text-cyan-200/90 bg-white/[0.04] p-1.5 rounded-lg border border-white/5 truncate">
-                      &gt; Flash-routing DEX liquidity delta...
-                    </div>
+              {/* 3. Top-Right: Apple iOS Liquid Glass Telemetry Ribbon */}
+              <div
+                style={{
+                  transform: `translate3d(${mousePos.x * -5}px, ${mousePos.y * -3}px, 0)`,
+                }}
+                className="absolute right-5 sm:right-8 top-5 sm:top-7 pointer-events-auto transition-transform duration-200 z-20 hidden sm:flex items-center"
+              >
+                <div className="ios-glass-capsule group flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-[11px] text-slate-700 cursor-pointer">
+                  <div className="flex items-center gap-1.5 text-blue-700 font-semibold">
+                    <Users className="w-3 h-3 text-blue-600" />
+                    <span>14,820 Swarms</span>
+                  </div>
+                  <div className="w-[1px] h-3.5 bg-gradient-to-b from-white/90 via-slate-400/30 to-transparent" />
+                  <div className="flex items-center gap-1 text-slate-700 font-mono text-[10.5px]">
+                    <Activity className="w-3 h-3 text-blue-600" />
+                    <span>4.2ms</span>
+                  </div>
+                  <div className="w-[1px] h-3.5 bg-gradient-to-b from-white/90 via-slate-400/30 to-transparent" />
+                  <div
+                    className="flex items-center gap-1 text-emerald-800 font-semibold text-[10px] px-2 py-0.5 rounded-full font-mono"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.20) 0%, rgba(16, 185, 129, 0.08) 100%)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      border: '1px solid rgba(16, 185, 129, 0.35)',
+                      boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.65), 0 2px 6px -1px rgba(16, 185, 129, 0.15)',
+                    }}
+                  >
+                    <Terminal className="w-2.5 h-2.5 text-emerald-700" />
+                    <span>E2B Sandboxed</span>
                   </div>
                 </div>
               </div>
 
-              {/* Floating Spatial Telemetry Facet 2: Swarm Protocol Mesh & Sandbox */}
-              <div
-                style={{
-                  transform: `translate3d(${mousePos.x * -6}px, ${mousePos.y * -4}px, 0)`,
-                }}
-                className="absolute right-4 sm:right-6 top-4 sm:top-6 pointer-events-auto transition-transform duration-200 z-20 max-w-[270px] sm:max-w-[300px] hidden sm:block"
-              >
-                <div
-                  className="rounded-[20px] p-3.5 sm:p-4 text-white shadow-2xl relative overflow-hidden group hover:border-white/25 transition-all"
-                  style={{
-                    background: 'rgba(8, 14, 28, 0.78)',
-                    backdropFilter: 'blur(28px) saturate(190%)',
-                    WebkitBackdropFilter: 'blur(28px) saturate(190%)',
-                    border: '1px solid rgba(255, 255, 255, 0.14)',
-                    boxShadow: '0 20px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.18)',
-                  }}
-                >
-                  {/* Top gloss specular highlight */}
-                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
-
-                  {/* Header: Network Stats */}
-                  <div className="flex items-center justify-between pb-2.5 border-b border-white/10">
-                    <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-lg bg-sky-500/20 border border-sky-400/30 flex items-center justify-center text-sky-400">
-                        <Activity className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <div className="text-[12px] font-bold text-white tracking-tight flex items-center gap-1.5">
-                          A2A Protocol
-                          <span className="text-[9px] font-semibold text-emerald-400 bg-emerald-500/20 px-1 rounded">
-                            LIVE
-                          </span>
-                        </div>
-                        <div className="text-[10px] text-slate-400 font-medium">14,820 Swarms Active</div>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-[11px] font-mono font-bold text-sky-300">4.2ms</div>
-                      <div className="text-[9px] text-slate-500">Latency</div>
-                    </div>
+              {/* 4. Bottom Center: Apple iOS Liquid Glass Dock */}
+              <div className="absolute bottom-5 sm:bottom-6 left-0 right-0 flex justify-center items-center pointer-events-none z-20 px-6">
+                <div className="ios-glass-dock flex items-center gap-3 sm:gap-4 px-5 py-2.5 rounded-full text-[11px] font-medium text-slate-700 max-w-full overflow-x-auto scrollbar-none transition-all duration-300">
+                  <div className="flex items-center gap-1.5 text-blue-700 font-semibold shrink-0">
+                    <Layers className="w-3.5 h-3.5 text-blue-600" />
+                    <span>Consensus v4.2</span>
                   </div>
-
-                  {/* Live Synaptic Audio & Voice Stream */}
-                  <div className="pt-2.5">
-                    <div className="flex items-center justify-between text-[10px] text-slate-400 mb-1.5">
-                      <span className="flex items-center gap-1">
-                        <Radio className="w-3 h-3 text-cyan-400 animate-pulse" />
-                        <span>Voice Waveform Synthesizer</span>
-                      </span>
-                      <span className="font-mono text-[9px] text-slate-400">48kHz Spatial</span>
-                    </div>
-                    <div className="py-1 px-2 rounded-lg bg-black/40 border border-white/5 flex items-center justify-center">
-                      <LiveWaveform barCount={22} height={20} colorScheme="cyan-violet" />
-                    </div>
+                  <div className="w-[1px] h-3.5 bg-gradient-to-b from-white/90 via-slate-400/30 to-transparent shrink-0" />
+                  <div className="flex items-center gap-1.5 text-slate-700 font-mono text-[10.5px] shrink-0">
+                    <Laptop className="w-3.5 h-3.5 text-blue-600" />
+                    <span>Daytona Sandbox</span>
                   </div>
-
-                  {/* Micro-Sandbox & Escrow Execution */}
-                  <div className="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-mono">
-                    <div className="flex items-center gap-1 text-slate-300">
-                      <Terminal className="w-3 h-3 text-emerald-400" />
-                      <span>E2B Micro-VM #829</span>
-                    </div>
-                    <div className="text-emerald-300 font-semibold bg-emerald-500/15 px-1.5 py-0.5 rounded border border-emerald-500/30 text-[9px]">
-                      +14.8 SOL Escrow
-                    </div>
+                  <div className="w-[1px] h-3.5 bg-gradient-to-b from-white/90 via-slate-400/30 to-transparent shrink-0 hidden md:block" />
+                  <div className="hidden md:flex items-center gap-1.5 text-slate-700 font-mono text-[10.5px] shrink-0">
+                    <Cpu className="w-3.5 h-3.5 text-indigo-600" />
+                    <span>Mem0 Vectors</span>
                   </div>
-                </div>
-              </div>
-
-              {/* Overlay Bottom Status Bar */}
-              <div className="absolute bottom-3 left-4 right-4 sm:bottom-4 sm:left-6 sm:right-6 flex flex-wrap items-center justify-between gap-2 text-white text-[11px] font-medium z-10 pointer-events-none">
-                <div className="flex items-center gap-2 backdrop-blur-xl bg-slate-950/75 px-3 py-1.5 rounded-full border border-white/15 shadow-lg">
-                  <span className="w-2 h-2 rounded-full bg-blue-400 animate-ping" />
-                  <span className="text-slate-200">Mesh Consensus v4.2 Active</span>
-                  <span className="hidden md:inline text-slate-500">•</span>
-                  <span className="hidden md:inline text-slate-400 font-mono text-[10.5px]">0.00012 SOL Gas</span>
-                </div>
-
-                <div className="hidden sm:flex items-center gap-2.5 backdrop-blur-xl bg-slate-950/75 px-3.5 py-1.5 rounded-full border border-white/15 shadow-lg font-mono text-[10.5px] text-slate-300">
-                  <span className="flex items-center gap-1.5 text-cyan-300">
-                    <Laptop className="w-3 h-3" /> Daytona Sandbox
-                  </span>
-                  <span className="text-slate-600">•</span>
-                  <span className="flex items-center gap-1.5 text-indigo-300">
-                    <Cpu className="w-3 h-3" /> Mem0 Vectors
-                  </span>
-                  <span className="text-slate-600">•</span>
-                  <span className="flex items-center gap-1.5 text-emerald-300">
-                    <ShieldCheck className="w-3 h-3" /> Deterministic Escrow
-                  </span>
+                  <div className="w-[1px] h-3.5 bg-gradient-to-b from-white/90 via-slate-400/30 to-transparent shrink-0" />
+                  <div className="flex items-center gap-1.5 text-emerald-800 font-mono text-[10.5px] font-semibold shrink-0">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Deterministic Escrow</span>
+                  </div>
                 </div>
               </div>
             </div>
