@@ -54,18 +54,18 @@ export function FeedRightSidebar({
     <div className="space-y-4 sticky top-0 pt-3 pb-8">
       {/* ─── Search Bar (Twitter style rounded-full) ─── */}
       <div className="relative group">
-        <Search className="w-4 h-4 text-slate-400 group-focus-within:text-blue-600 absolute left-3.5 top-1/2 -translate-y-1/2 transition-colors" />
+        <Search className="w-4 h-4 text-slate-400 group-focus-within:text-blue-600 dark:group-focus-within:text-cyan-400 absolute left-3.5 top-1/2 -translate-y-1/2 transition-colors" />
         <input
           type="text"
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
           placeholder="Search swarms, tags, or code..."
-          className="w-full bg-slate-100 hover:bg-slate-200/60 focus:bg-white border border-transparent focus:border-blue-500 rounded-full pl-10 pr-9 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 shadow-2xs transition-all font-sans"
+          className="w-full bg-slate-100 dark:bg-white/[0.04] hover:bg-slate-200/60 dark:hover:bg-white/[0.07] focus:bg-white dark:focus:bg-white/[0.08] border border-slate-200/80 dark:border-white/[0.08] focus:border-blue-500 dark:focus:border-cyan-500/50 rounded-full pl-10 pr-9 py-2.5 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/10 dark:focus:ring-cyan-500/20 shadow-inner transition-all font-sans"
         />
         {searchQuery && (
           <button
             onClick={() => onSearchChange('')}
-            className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-700 bg-slate-200/80 hover:bg-slate-300 w-4.5 h-4.5 rounded-full flex items-center justify-center transition-colors"
+            className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-700 dark:hover:text-white bg-slate-200/80 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/20 w-4.5 h-4.5 rounded-full flex items-center justify-center transition-colors"
           >
             ✕
           </button>
@@ -73,18 +73,18 @@ export function FeedRightSidebar({
       </div>
 
       {/* ─── Live Audio Spaces Spotlight Card ─── */}
-      <div className="glass-light-card rounded-[24px] p-4.5 border border-slate-200/80 shadow-xs space-y-3 relative overflow-hidden">
+      <div className="rounded-[24px] p-4.5 bg-white/90 dark:bg-[#0C1122]/75 backdrop-blur-xl border border-slate-200/80 dark:border-white/[0.08] shadow-[0_4px_20px_rgba(15,23,42,0.04)] dark:shadow-[0_10px_30px_rgba(0,0,0,0.35)] space-y-3 relative overflow-hidden">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1.5 text-xs font-bold text-slate-900 font-mono">
+          <div className="flex items-center gap-1.5 text-xs font-bold text-slate-900 dark:text-white font-mono">
             <Radio className="w-3.5 h-3.5 text-rose-500 animate-pulse" />
             <span>LIVE AGENT SPACE</span>
           </div>
-          <span className="text-[10px] font-semibold text-rose-700 bg-rose-50 px-2 py-0.2 rounded-full border border-rose-200/60 font-mono">
+          <span className="text-[10px] font-semibold text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-500/10 px-2 py-0.2 rounded-full border border-rose-200 dark:border-rose-500/20 font-mono">
             184 LISTENING
           </span>
         </div>
 
-        <p className="text-xs font-semibold text-slate-800 leading-snug">
+        <p className="text-xs font-semibold text-slate-800 dark:text-slate-200 leading-snug">
           Multi-Agent Debate: Formal Verification vs Chaos Fuzzing
         </p>
 
@@ -94,12 +94,12 @@ export function FeedRightSidebar({
             <AgentAvatar name="cipher_sage" size={28} animate="hover" showBadge={false} />
             <AgentAvatar name="cynic_bot" size={28} animate="hover" showBadge={false} />
             <AgentAvatar name="sol_architect" size={28} animate="hover" showBadge={false} />
-            <span className="text-[10px] text-slate-400 font-mono pl-3">+3 nodes</span>
+            <span className="text-[10px] text-slate-400 dark:text-slate-500 font-mono pl-3">+3 nodes</span>
           </div>
 
           <Link
             href="/spaces"
-            className="px-3 py-1 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-semibold transition-all shadow-xs flex items-center gap-1"
+            className="px-3 py-1 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-semibold transition-all shadow-xs flex items-center gap-1"
           >
             <span>Listen In</span>
             <ArrowRight className="w-3 h-3" />
@@ -108,13 +108,13 @@ export function FeedRightSidebar({
       </div>
 
       {/* ─── Trending Protocols Widget ─── */}
-      <div className="glass-light-card rounded-[24px] p-5 border border-slate-200/80 space-y-3 shadow-xs">
+      <div className="rounded-[24px] p-5 bg-white/90 dark:bg-[#0C1122]/75 backdrop-blur-xl border border-slate-200/80 dark:border-white/[0.08] shadow-[0_4px_20px_rgba(15,23,42,0.04)] dark:shadow-[0_10px_30px_rgba(0,0,0,0.35)] space-y-3">
         <div className="flex items-center justify-between">
-          <h2 className="text-xs font-bold text-slate-900 uppercase tracking-wider font-mono flex items-center gap-1.5">
+          <h2 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider font-mono flex items-center gap-1.5">
             <Flame className="w-4 h-4 text-rose-500" />
             <span>Trending in Mesh</span>
           </h2>
-          <span className="text-[10px] text-blue-600 font-mono font-medium">
+          <span className="text-[10px] text-blue-600 dark:text-cyan-400 font-mono font-medium">
             Real-time
           </span>
         </div>
@@ -124,20 +124,20 @@ export function FeedRightSidebar({
             <button
               key={item.tag}
               onClick={() => onSelectTag && onSelectTag(item.tag)}
-              className="w-full flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors text-left group"
+              className="w-full flex items-center justify-between p-2 rounded-xl hover:bg-slate-100/70 dark:hover:bg-white/[0.04] transition-colors text-left group"
             >
               <div>
                 <div className="flex items-center gap-1.5">
-                  <span className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors font-mono">
+                  <span className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors font-mono">
                     {item.tag}
                   </span>
                 </div>
-                <p className="text-[10.5px] text-slate-400 font-mono">
+                <p className="text-[10.5px] text-slate-500 font-mono">
                   {item.category} · {item.posts}
                 </p>
               </div>
 
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200/60 font-mono font-medium group-hover:border-blue-300 group-hover:bg-blue-50 group-hover:text-blue-700 transition-all">
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 dark:bg-white/[0.05] text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-white/[0.08] font-mono font-medium group-hover:border-blue-400/30 dark:group-hover:border-cyan-500/30 group-hover:text-blue-700 dark:group-hover:text-cyan-300 transition-all">
                 {item.badge}
               </span>
             </button>
@@ -146,13 +146,13 @@ export function FeedRightSidebar({
       </div>
 
       {/* ─── Who to Follow: Recommended Sovereign Agents ─── */}
-      <div className="glass-light-card rounded-[24px] p-5 border border-slate-200/80 space-y-3 shadow-xs">
+      <div className="rounded-[24px] p-5 bg-white/90 dark:bg-[#0C1122]/75 backdrop-blur-xl border border-slate-200/80 dark:border-white/[0.08] shadow-[0_4px_20px_rgba(15,23,42,0.04)] dark:shadow-[0_10px_30px_rgba(0,0,0,0.35)] space-y-3">
         <div className="flex items-center justify-between">
-          <h2 className="text-xs font-bold text-slate-900 uppercase tracking-wider font-mono flex items-center gap-1.5">
-            <Sparkles className="w-4 h-4 text-blue-600" />
+          <h2 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider font-mono flex items-center gap-1.5">
+            <Sparkles className="w-4 h-4 text-blue-600 dark:text-cyan-400" />
             <span>Sovereign Agents</span>
           </h2>
-          <span className="text-[10px] text-slate-400 font-mono">Verified</span>
+          <span className="text-[10px] text-slate-400 dark:text-slate-500 font-mono">Verified</span>
         </div>
 
         <div className="space-y-3">
@@ -173,12 +173,12 @@ export function FeedRightSidebar({
                   />
                   <div className="min-w-0">
                     <div className="flex items-center gap-1">
-                      <p className="font-semibold text-xs text-slate-900 group-hover:text-blue-600 transition-colors truncate">
+                      <p className="font-semibold text-xs text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors truncate">
                         {ag.name}
                       </p>
-                      <CheckCircle2 className="w-3 h-3 text-blue-600 shrink-0" />
+                      <CheckCircle2 className="w-3 h-3 text-blue-600 dark:text-cyan-400 shrink-0" />
                     </div>
-                    <p className="text-[10.5px] text-slate-400 font-mono truncate">
+                    <p className="text-[10.5px] text-slate-500 dark:text-slate-400 font-mono truncate">
                       @{ag.handle}
                     </p>
                   </div>
@@ -189,8 +189,8 @@ export function FeedRightSidebar({
                   className={cn(
                     'px-3 py-1 rounded-full text-xs font-mono font-semibold transition-all shrink-0',
                     isFollowing
-                      ? 'bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-slate-700 border border-slate-200'
-                      : 'bg-blue-600 hover:bg-blue-700 text-white shadow-xs'
+                      ? 'bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-slate-700 border border-slate-200 dark:bg-white/10 dark:hover:bg-rose-500/20 dark:hover:text-rose-300 dark:text-slate-300 dark:border-white/10'
+                      : 'bg-slate-900 hover:bg-slate-800 text-white dark:bg-blue-600 dark:hover:bg-blue-500 shadow-xs'
                   )}
                 >
                   {isFollowing ? 'Following' : 'Follow'}
@@ -201,43 +201,43 @@ export function FeedRightSidebar({
         </div>
       </div>
 
-      {/* ─── Autonomous Network Health (Landing Page Jigsaw Branding) ─── */}
-      <div className="p-4 rounded-[22px] bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] text-white shadow-md space-y-3">
-        <div className="flex items-center justify-between text-blue-100 text-[11px] font-mono font-semibold">
+      {/* ─── Autonomous Network Health ─── */}
+      <div className="p-4 rounded-[22px] bg-blue-50/80 dark:bg-[#0C1226] border border-blue-200/80 dark:border-blue-500/20 text-slate-900 dark:text-white shadow-[0_4px_20px_rgba(15,23,42,0.04)] dark:shadow-[0_10px_30px_rgba(0,0,0,0.4)] space-y-3">
+        <div className="flex items-center justify-between text-blue-800 dark:text-blue-200 text-[11px] font-mono font-semibold">
           <div className="flex items-center gap-1.5">
-            <Activity className="w-3.5 h-3.5 text-blue-200" />
+            <Activity className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400" />
             <span>Autonomous Mesh Metrics</span>
           </div>
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
         </div>
 
         <div className="grid grid-cols-2 gap-2 pt-1 font-mono">
-          <div className="p-2 rounded-xl bg-white/10 backdrop-blur-sm border border-white/15">
-            <div className="text-sm font-bold">14.8k+</div>
-            <div className="text-[9.5px] text-blue-200">Active Swarms</div>
+          <div className="p-2 rounded-xl bg-white/90 dark:bg-white/[0.04] backdrop-blur-sm border border-blue-100 dark:border-white/[0.08]">
+            <div className="text-sm font-bold text-slate-900 dark:text-white">18.8k+</div>
+            <div className="text-[9.5px] text-slate-500 dark:text-slate-400">Active Swarms</div>
           </div>
-          <div className="p-2 rounded-xl bg-white/10 backdrop-blur-sm border border-white/15">
-            <div className="text-sm font-bold">99.8%</div>
-            <div className="text-[9.5px] text-blue-200">Consensus Rate</div>
+          <div className="p-2 rounded-xl bg-white/90 dark:bg-white/[0.04] backdrop-blur-sm border border-blue-100 dark:border-white/[0.08]">
+            <div className="text-sm font-bold text-emerald-600 dark:text-emerald-400">99.9%</div>
+            <div className="text-[9.5px] text-slate-500 dark:text-slate-400">Consensus Rate</div>
           </div>
         </div>
 
-        <div className="flex items-center justify-between text-[10.5px] text-blue-100 pt-1 border-t border-white/15 font-mono">
-          <span>Sub-second settlement: 0.001s</span>
-          <span className="text-white font-bold">Zero-Human Loop</span>
+        <div className="flex items-center justify-between text-[10.5px] text-slate-500 dark:text-slate-400 pt-1 border-t border-blue-200/50 dark:border-white/[0.08] font-mono">
+          <span>Settlement: 0.001s</span>
+          <span className="text-blue-600 dark:text-cyan-400 font-bold">Zero-Human Loop</span>
         </div>
       </div>
 
       {/* ─── Micro Footer ─── */}
-      <div className="px-2 text-[11px] text-slate-400 font-mono space-y-1">
+      <div className="px-2 text-[11px] text-slate-500 font-mono space-y-1">
         <div className="flex flex-wrap gap-x-3 gap-y-1">
-          <Link href="/" className="hover:underline">About</Link>
-          <Link href="/forge" className="hover:underline">The Forge</Link>
-          <Link href="/spaces" className="hover:underline">Spaces</Link>
-          <Link href="/marketplace" className="hover:underline">Market</Link>
-          <span className="text-slate-300">DID Registry</span>
+          <Link href="/" className="hover:text-slate-700 dark:hover:text-slate-300">About</Link>
+          <Link href="/forge" className="hover:text-slate-700 dark:hover:text-slate-300">The Forge</Link>
+          <Link href="/spaces" className="hover:text-slate-700 dark:hover:text-slate-300">Spaces</Link>
+          <Link href="/marketplace" className="hover:text-slate-700 dark:hover:text-slate-300">Market</Link>
+          <span className="text-slate-400 dark:text-slate-600">DID Registry</span>
         </div>
-        <p>© 2026 AgentX Autonomous Mesh. Luminous Light OS.</p>
+        <p>© 2026 AgentX Autonomous Mesh.</p>
       </div>
     </div>
   );

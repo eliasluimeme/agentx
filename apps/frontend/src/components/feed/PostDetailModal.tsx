@@ -96,7 +96,7 @@ export function PostDetailModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-md p-4 animate-in fade-in duration-200">
       <div className="absolute inset-0" onClick={onClose} />
 
-      <div className="relative z-10 w-full max-w-4xl max-h-[90vh] bg-white rounded-[28px] border border-slate-200 shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12">
+      <div className="relative z-10 w-full max-w-4xl max-h-[90vh] bg-white dark:bg-[#0C1122] rounded-[28px] border border-slate-200 dark:border-white/[0.1] shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12">
         {/* Specular highlight beam */}
         <div className="absolute top-0 left-0 right-0 h-[2px] overflow-hidden pointer-events-none z-30">
           <div className="w-full h-full specular-beam" />
@@ -163,9 +163,9 @@ export function PostDetailModal({
         </div>
 
         {/* Right Side: Agent Info, Captions & Comments (5 cols) */}
-        <div className="md:col-span-5 flex flex-col justify-between h-full max-h-[90vh] bg-white">
+        <div className="md:col-span-5 flex flex-col justify-between h-full max-h-[90vh] bg-white dark:bg-[#0C1122]">
           {/* Header */}
-          <div className="p-4 border-b border-slate-100 flex items-center justify-between">
+          <div className="p-4 border-b border-slate-100 dark:border-white/[0.08] flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <AgentAvatar
                 name={post.agent?.handle || 'agent'}
@@ -175,12 +175,12 @@ export function PostDetailModal({
               />
               <div>
                 <div className="flex items-center gap-1.5">
-                  <span className="font-bold text-xs text-slate-900">
+                  <span className="font-bold text-xs text-slate-900 dark:text-white">
                     {post.agent?.name}
                   </span>
-                  <CheckCircle2 className="w-3.5 h-3.5 text-blue-600" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400" />
                 </div>
-                <p className="text-[11px] text-slate-400 font-mono">
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">
                   @{post.agent?.handle}
                 </p>
               </div>
@@ -188,7 +188,7 @@ export function PostDetailModal({
 
             <button
               onClick={onClose}
-              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors"
+              className="w-8 h-8 rounded-full bg-slate-100 dark:bg-white/[0.06] hover:bg-slate-200 dark:hover:bg-white/[0.1] text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center justify-center transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -197,14 +197,14 @@ export function PostDetailModal({
           {/* Scrollable Center: Caption, Thought Trace, Comments */}
           <div className="p-4 flex-1 overflow-y-auto space-y-4">
             {/* Caption */}
-            <div className="text-xs text-slate-800 leading-relaxed font-sans whitespace-pre-line">
+            <div className="text-xs text-slate-800 dark:text-slate-200 leading-relaxed font-sans whitespace-pre-line">
               {post.content}
             </div>
 
             {/* Thought Trace */}
             {post.thoughtTrace && (
-              <div className="rounded-xl border border-blue-200 bg-blue-50/60 p-3 font-mono text-[11px] text-blue-900 leading-relaxed">
-                <div className="font-semibold text-blue-700 flex items-center gap-1.5 mb-1">
+              <div className="rounded-xl border border-blue-200 dark:border-blue-500/30 bg-blue-50/60 dark:bg-blue-950/40 p-3 font-mono text-[11px] text-blue-900 dark:text-blue-200 leading-relaxed">
+                <div className="font-semibold text-blue-700 dark:text-cyan-400 flex items-center gap-1.5 mb-1">
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>Chain of Thought Reasoning</span>
                 </div>
@@ -213,8 +213,8 @@ export function PostDetailModal({
             )}
 
             {/* Comments List */}
-            <div className="space-y-3 pt-2 border-t border-slate-100">
-              <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-mono">
+            <div className="space-y-3 pt-2 border-t border-slate-100 dark:border-white/[0.08]">
+              <div className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider font-mono">
                 Thread Replies ({comments.length})
               </div>
 
@@ -226,16 +226,16 @@ export function PostDetailModal({
                     animate="hover"
                     showBadge={false}
                   />
-                  <div className="flex-1 bg-slate-50 p-2.5 rounded-xl border border-slate-100 space-y-0.5">
+                  <div className="flex-1 bg-slate-50 dark:bg-white/[0.03] p-2.5 rounded-xl border border-slate-100 dark:border-white/[0.06] space-y-0.5">
                     <div className="flex items-center justify-between">
-                      <span className="font-semibold text-slate-900">
+                      <span className="font-semibold text-slate-900 dark:text-white">
                         {comm.authorAgent?.name}
                       </span>
-                      <span className="text-[10px] text-slate-400 font-mono">
+                      <span className="text-[10px] text-slate-400 dark:text-slate-500 font-mono">
                         {formatTimeAgo(comm.createdAt)}
                       </span>
                     </div>
-                    <p className="text-slate-700 leading-snug">{comm.content}</p>
+                    <p className="text-slate-700 dark:text-slate-300 leading-snug">{comm.content}</p>
                   </div>
                 </div>
               ))}
@@ -243,14 +243,14 @@ export function PostDetailModal({
           </div>
 
           {/* Bottom Action Bar & Inline Reply Form */}
-          <div className="p-4 border-t border-slate-100 space-y-3 bg-slate-50/50">
-            <div className="flex items-center justify-between text-slate-600">
+          <div className="p-4 border-t border-slate-100 dark:border-white/[0.08] space-y-3 bg-slate-50/50 dark:bg-white/[0.02]">
+            <div className="flex items-center justify-between text-slate-600 dark:text-slate-400">
               <div className="flex items-center gap-3">
                 <button
                   onClick={handleLike}
                   className={cn(
                     'flex items-center gap-1 text-xs font-mono transition-colors',
-                    hasLiked ? 'text-rose-600 font-bold' : 'hover:text-slate-900'
+                    hasLiked ? 'text-rose-600 font-bold' : 'hover:text-slate-900 dark:hover:text-white'
                   )}
                 >
                   <Heart className={cn('w-4 h-4', hasLiked && 'fill-rose-600')} />
@@ -261,7 +261,7 @@ export function PostDetailModal({
                   onClick={() => {
                     if (onOpenTipModal && post.agent) onOpenTipModal(post.agent);
                   }}
-                  className="flex items-center gap-1 text-xs font-mono text-blue-600 hover:text-blue-700 font-bold"
+                  className="flex items-center gap-1 text-xs font-mono text-blue-600 dark:text-cyan-400 hover:text-blue-700 dark:hover:text-cyan-300 font-bold"
                 >
                   <Coins className="w-4 h-4 text-amber-500" />
                   <span>✦ Tip</span>
@@ -280,7 +280,7 @@ export function PostDetailModal({
                 value={newCommentText}
                 onChange={(e) => setNewCommentText(e.target.value)}
                 placeholder="Add a reply..."
-                className="flex-1 bg-white border border-slate-200 rounded-full px-3.5 py-1.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 font-sans"
+                className="flex-1 bg-white dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.1] rounded-full px-3.5 py-1.5 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400 font-sans"
               />
               <button
                 type="submit"

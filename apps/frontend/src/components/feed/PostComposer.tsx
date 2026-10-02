@@ -149,11 +149,9 @@ export function PostComposer({ onPostCreated }: PostComposerProps) {
   };
 
   return (
-    <div className="relative glass-light-card rounded-[24px] p-5 border border-slate-200/80 shadow-xs hover:border-blue-300 transition-all overflow-hidden">
+    <div className="relative rounded-[24px] p-5 bg-white/90 dark:bg-[#0C1122]/75 backdrop-blur-xl border border-slate-200/80 dark:border-white/[0.08] shadow-[0_4px_20px_rgba(15,23,42,0.04)] dark:shadow-[0_10px_30px_rgba(0,0,0,0.35)] hover:border-blue-400/40 dark:hover:border-cyan-500/30 transition-all overflow-hidden">
       {/* Specular highlight beam */}
-      <div className="absolute top-0 left-0 right-0 h-[1.5px] overflow-hidden pointer-events-none z-10">
-        <div className="w-full h-full specular-beam" />
-      </div>
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500/20 dark:via-cyan-400/25 to-transparent pointer-events-none z-10" />
 
       <div className="flex items-start gap-3.5">
         <AgentAvatar
@@ -173,12 +171,12 @@ export function PostComposer({ onPostCreated }: PostComposerProps) {
             onKeyDown={handleKeyDown}
             rows={isExpanding ? 3 : 2}
             placeholder="Command autonomous swarms, post a build log, or start a duel..."
-            className="w-full bg-transparent text-sm text-slate-900 placeholder-slate-400 focus:outline-none resize-none font-sans leading-relaxed"
+            className="w-full bg-transparent text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none resize-none font-sans leading-relaxed"
           />
 
           {/* Expanded Configuration Controls */}
           {isExpanding && (
-            <div className="space-y-3 pt-2 border-t border-slate-100 animate-in fade-in duration-150">
+            <div className="space-y-3 pt-2 border-t border-slate-200/70 dark:border-white/[0.06] animate-in fade-in duration-150">
               {/* Post Type Selector Pills */}
               <div className="flex items-center gap-1.5 flex-wrap text-xs font-mono">
                 {[
@@ -197,7 +195,7 @@ export function PostComposer({ onPostCreated }: PostComposerProps) {
                         'flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold transition-all',
                         isSelected
                           ? 'bg-blue-600 text-white shadow-xs'
-                          : 'bg-slate-100 text-slate-600 hover:text-slate-900 hover:bg-slate-200/70'
+                          : 'bg-slate-100 dark:bg-white/[0.05] border border-slate-200/80 dark:border-white/[0.08] text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-white/[0.1]'
                       )}
                     >
                       <type.icon className="w-3.5 h-3.5" />
@@ -215,30 +213,30 @@ export function PostComposer({ onPostCreated }: PostComposerProps) {
                     value={benchmarkResult}
                     onChange={(e) => setBenchmarkResult(e.target.value)}
                     placeholder="Benchmark (e.g. 4.2M req/s | p99 0.18ms)"
-                    className="p-2 rounded-xl bg-slate-50 border border-slate-200/80 focus:outline-none focus:border-blue-400 text-slate-800"
+                    className="p-2 rounded-xl bg-slate-50 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/[0.08] focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500"
                   />
                   <input
                     type="text"
                     value={liveUrl}
                     onChange={(e) => setLiveUrl(e.target.value)}
                     placeholder="Sandbox / Live URL (https://...)"
-                    className="p-2 rounded-xl bg-slate-50 border border-slate-200/80 focus:outline-none focus:border-blue-400 text-slate-800"
+                    className="p-2 rounded-xl bg-slate-50 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/[0.08] focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500"
                   />
                 </div>
               )}
 
               {/* Simulation Checkbox */}
-              <div className="flex items-center justify-between text-xs font-mono text-slate-500 pt-1">
+              <div className="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400 pt-1">
                 <label className="flex items-center gap-2 cursor-pointer select-none">
                   <input
                     type="checkbox"
                     checked={autoSimulateReply}
                     onChange={(e) => setAutoSimulateReply(e.target.checked)}
-                    className="rounded border-slate-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5"
+                    className="rounded border-slate-300 dark:border-white/20 bg-slate-50 dark:bg-white/5 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5"
                   />
                   <span>Simulate Peer Agent Response</span>
                 </label>
-                <span className="text-[10.5px] text-slate-400">
+                <span className="text-[10.5px] text-slate-400 dark:text-slate-500">
                   Press ⌘ + Enter to dispatch
                 </span>
               </div>
@@ -246,22 +244,22 @@ export function PostComposer({ onPostCreated }: PostComposerProps) {
           )}
 
           {/* Action Footer */}
-          <div className="flex items-center justify-between pt-2 border-t border-slate-100">
+          <div className="flex items-center justify-between pt-2 border-t border-slate-200/70 dark:border-white/[0.06]">
             {/* Model Selector Pill */}
             <div className="relative">
               <button
                 type="button"
                 onClick={() => setShowModelMenu(!showModelMenu)}
-                className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200/80 text-slate-700 text-xs font-mono font-medium transition-colors border border-slate-200/60"
+                className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200/70 text-slate-700 dark:bg-white/[0.05] dark:hover:bg-white/[0.08] dark:text-slate-300 text-xs font-mono font-medium transition-colors border border-slate-200/80 dark:border-white/[0.08]"
               >
-                <Cpu className="w-3.5 h-3.5 text-blue-600" />
+                <Cpu className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400" />
                 <span>{selectedModel}</span>
                 <ChevronDown className="w-3 h-3 text-slate-400" />
               </button>
 
               {/* Model Dropdown Menu */}
               {showModelMenu && (
-                <div className="absolute left-0 bottom-full mb-2 w-56 rounded-2xl bg-white border border-slate-200 shadow-xl p-1.5 z-30 font-mono text-xs animate-in fade-in duration-150">
+                <div className="absolute left-0 bottom-full mb-2 w-56 rounded-2xl bg-white dark:bg-[#0D1222] border border-slate-200 dark:border-white/[0.12] shadow-xl dark:shadow-2xl p-1.5 z-30 font-mono text-xs animate-in fade-in duration-150">
                   <div className="px-2.5 py-1 text-[10px] uppercase tracking-wider text-slate-400 font-bold">
                     Select Swarm Model
                   </div>
@@ -275,18 +273,18 @@ export function PostComposer({ onPostCreated }: PostComposerProps) {
                       className={cn(
                         'w-full flex items-center justify-between p-2 rounded-xl text-left transition-colors',
                         selectedModel === opt.name
-                          ? 'bg-blue-50 text-blue-700 font-semibold'
-                          : 'text-slate-700 hover:bg-slate-50'
+                          ? 'bg-blue-50 text-blue-700 dark:bg-blue-600/20 dark:text-cyan-300 font-semibold border border-blue-200 dark:border-cyan-500/20'
+                          : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/[0.05]'
                       )}
                     >
                       <div>
                         <div>{opt.name}</div>
-                        <div className="text-[10px] text-slate-400">
+                        <div className="text-[10px] text-slate-500">
                           {opt.provider} · {opt.badge}
                         </div>
                       </div>
                       {selectedModel === opt.name && (
-                        <Check className="w-4 h-4 text-blue-600" />
+                        <Check className="w-4 h-4 text-blue-600 dark:text-cyan-400" />
                       )}
                     </button>
                   ))}
@@ -299,7 +297,7 @@ export function PostComposer({ onPostCreated }: PostComposerProps) {
               <button
                 onClick={() => handleSubmit()}
                 disabled={!content.trim() || isSubmitting}
-                className="flex items-center gap-2 px-5 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-md shadow-blue-500/25 transition-all disabled:opacity-40 disabled:pointer-events-none active:scale-[0.98]"
+                className="flex items-center gap-2 px-5 py-2 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-md shadow-blue-500/25 transition-all disabled:opacity-40 disabled:pointer-events-none active:scale-[0.98]"
               >
                 {isSubmitting ? (
                   <>

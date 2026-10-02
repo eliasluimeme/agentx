@@ -161,7 +161,7 @@ export default function FeedPage() {
   }, [posts, activeTab, searchQuery]);
 
   return (
-    <div className="flex justify-start w-full min-h-screen">
+    <div className="flex justify-center w-full min-h-full mx-auto max-w-6xl px-2 sm:px-4">
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 px-4 py-2.5 rounded-2xl bg-slate-900 text-white text-xs font-mono shadow-2xl border border-slate-700 flex items-center gap-2 animate-in fade-in slide-in-from-bottom-3 duration-200">
@@ -170,14 +170,14 @@ export default function FeedPage() {
         </div>
       )}
 
-      {/* ─── Center Timeline Column (Twitter: 620px wide with right border) ─── */}
-      <div className="w-full max-w-[620px] min-h-screen border-r border-slate-200/80 flex flex-col pb-20">
+      {/* ─── Center Timeline Column (Twitter: 620px wide with right border on desktop) ─── */}
+      <div className="w-full max-w-[620px] min-h-full lg:border-r border-slate-200/80 dark:border-white/[0.08] flex flex-col pb-24">
         {/* Top Sticky Header (Twitter / X Style) */}
-        <div className="sticky top-0 z-30 bg-white/85 backdrop-blur-xl border-b border-slate-200/80 transition-all select-none">
+        <div className="sticky top-0 z-30 bg-white/80 dark:bg-[#0A0E1A]/85 backdrop-blur-xl border-b border-slate-200/80 dark:border-white/[0.08] transition-all select-none">
           <div className="px-4 py-2.5 flex items-center justify-between gap-3">
             <div className="flex items-center gap-2 min-w-0">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-              <h1 className="text-base sm:text-lg font-bold text-slate-900 leading-tight truncate">
+              <h1 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-tight truncate">
                 Autonomous Square
               </h1>
             </div>
@@ -185,15 +185,15 @@ export default function FeedPage() {
             {/* Top Right Action Controls */}
             <div className="flex items-center gap-2 shrink-0">
               {/* View Switcher: Stream vs Grid */}
-              <div className="flex items-center p-0.5 rounded-xl bg-slate-100 border border-slate-200/80 text-xs font-mono">
+              <div className="flex items-center p-0.5 rounded-xl bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] text-xs font-mono">
                 <button
                   type="button"
                   onClick={() => setViewMode('timeline')}
                   className={cn(
                     'flex items-center gap-1 px-2.5 py-1 rounded-lg transition-all',
                     viewMode === 'timeline'
-                      ? 'bg-white text-slate-900 shadow-2xs font-bold'
-                      : 'text-slate-500 hover:text-slate-800'
+                      ? 'bg-white dark:bg-white/10 text-slate-900 dark:text-white font-bold shadow-xs'
+                      : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                   )}
                   title="Timeline Stream (X style)"
                 >
@@ -206,8 +206,8 @@ export default function FeedPage() {
                   className={cn(
                     'flex items-center gap-1 px-2.5 py-1 rounded-lg transition-all',
                     viewMode === 'grid'
-                      ? 'bg-white text-slate-900 shadow-2xs font-bold'
-                      : 'text-slate-500 hover:text-slate-800'
+                      ? 'bg-white dark:bg-white/10 text-slate-900 dark:text-white font-bold shadow-xs'
+                      : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                   )}
                   title="Visual Grid (Instagram style)"
                 >
@@ -221,7 +221,7 @@ export default function FeedPage() {
                 type="button"
                 onClick={handleSimulateAutonomousStep}
                 disabled={isTriggering}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-mono font-semibold shadow-xs transition-all disabled:opacity-50 shrink-0 active:scale-95"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-mono font-semibold shadow-xs transition-all disabled:opacity-50 shrink-0 active:scale-95"
               >
                 <Sparkles className={cn('w-3.5 h-3.5', isTriggering && 'animate-spin text-blue-200')} />
                 <span className="hidden sm:inline">
@@ -232,7 +232,7 @@ export default function FeedPage() {
           </div>
 
           {/* Twitter-Style Tabs with clean indicator */}
-          <div className="flex items-center overflow-x-auto scrollbar-none px-2 border-t border-slate-100 text-xs font-mono">
+          <div className="flex items-center overflow-x-auto scrollbar-none px-2 border-t border-slate-200/70 dark:border-white/[0.06] text-xs font-mono">
             {[
               { id: 'FOR_YOU', label: 'For You' },
               { id: 'FOLLOWING', label: 'Following' },
@@ -249,13 +249,13 @@ export default function FeedPage() {
                   className={cn(
                     'relative px-4 py-2.5 font-semibold whitespace-nowrap transition-colors flex-1 text-center',
                     isActive
-                      ? 'text-slate-900 font-bold'
-                      : 'text-slate-500 hover:text-slate-800 hover:bg-slate-50/80'
+                      ? 'text-blue-600 dark:text-white font-bold'
+                      : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-white/[0.03]'
                   )}
                 >
                   <span>{tab.label}</span>
                   {isActive && (
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-[3px] bg-blue-600 rounded-full" />
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-[2.5px] bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.4)] rounded-full" />
                   )}
                 </button>
               );
@@ -291,11 +291,11 @@ export default function FeedPage() {
               ))}
 
               {filteredPosts.length === 0 && !isLoading && (
-                <div className="text-center py-16 glass-light-card rounded-[24px] border border-slate-200/80 text-slate-500 text-xs font-mono space-y-2">
-                  <p className="text-sm font-semibold text-slate-700">
+                <div className="text-center py-16 rounded-[24px] bg-[#0C1122]/60 border border-white/[0.08] text-slate-400 text-xs font-mono space-y-2">
+                  <p className="text-sm font-semibold text-slate-200">
                     No posts found for this stream
                   </p>
-                  <p className="text-slate-400">
+                  <p className="text-slate-500">
                     Try selecting &quot;For You&quot; or clearing your search filter.
                   </p>
                 </div>
@@ -313,7 +313,7 @@ export default function FeedPage() {
               ))}
 
               {filteredPosts.length === 0 && !isLoading && (
-                <div className="col-span-full text-center py-16 glass-light-card rounded-[24px] border border-slate-200/80 text-slate-500 text-xs font-mono">
+                <div className="col-span-full text-center py-16 rounded-[24px] bg-[#0C1122]/60 border border-white/[0.08] text-slate-400 text-xs font-mono">
                   No visual assets in this category.
                 </div>
               )}
@@ -323,7 +323,7 @@ export default function FeedPage() {
       </div>
 
       {/* ─── Right Discovery Sidebar (Twitter: 350px-380px wide) ─── */}
-      <div className="hidden lg:block w-[350px] xl:w-[380px] shrink-0 pl-6 xl:pl-8">
+      <div className="hidden lg:block w-[350px] xl:w-[380px] shrink-0 pl-6 xl:pl-8 py-3">
         <FeedRightSidebar
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}

@@ -253,21 +253,21 @@ export default function ForgePage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto space-y-6 pb-12">
+    <div className="max-w-7xl mx-auto space-y-6 p-4 sm:p-6 pb-24">
       {/* ─── Top Workspace Header Bar ─── */}
-      <div className="glass-light-window p-4 sm:p-5 rounded-[24px] border border-white/90 shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="rounded-[22px] p-4 sm:p-5 border border-slate-200/80 dark:border-white/[0.08] bg-white/90 dark:bg-[#0C1122]/75 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-600 to-cyan-500 flex items-center justify-center text-white shadow-md shadow-blue-500/25 shrink-0">
             <Terminal className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-lg font-bold text-slate-900 leading-none">
+              <h1 className="text-lg font-bold text-slate-900 dark:text-white leading-none">
                 The Forge — Autonomous Cloud Development Sandbox
               </h1>
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
             </div>
-            <p className="text-xs text-slate-500 font-mono mt-1">
+            <p className="text-xs text-slate-500 dark:text-slate-400 font-mono mt-1">
               Daytona Containers & E2B Firecracker MicroVMs · Real-time agent pair-programming
             </p>
           </div>
@@ -280,9 +280,9 @@ export default function ForgePage() {
             href="https://warp-kv.agentx.dev"
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-700 text-xs font-mono font-medium hover:bg-emerald-100 transition-colors shadow-2xs"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-mono font-medium hover:bg-emerald-500/20 transition-colors shadow-2xs"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
             <span>warp-kv.agentx.dev</span>
             <ExternalLink className="w-3 h-3" />
           </a>
@@ -292,12 +292,12 @@ export default function ForgePage() {
             <select
               value={selectedModel}
               onChange={(e) => setSelectedModel(e.target.value)}
-              className="appearance-none px-3 py-1.5 pr-7 rounded-full bg-slate-100 border border-slate-200/80 text-slate-700 text-xs font-mono font-medium focus:outline-none focus:border-blue-500 cursor-pointer shadow-2xs"
+              className="appearance-none px-3 py-1.5 pr-7 rounded-full bg-slate-100 dark:bg-white/[0.05] border border-slate-200/80 dark:border-white/[0.08] text-slate-800 dark:text-white text-xs font-mono font-medium focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400 cursor-pointer shadow-2xs"
             >
-              <option value="Claude 3.7 Sonnet">✦ Claude 3.7 Sonnet</option>
-              <option value="GPT-4o">✦ GPT-4o</option>
-              <option value="DeepSeek R1">✦ DeepSeek R1</option>
-              <option value="Gemini 2.0 Flash">✦ Gemini 2.0 Flash</option>
+              <option value="Claude 3.7 Sonnet" className="bg-white dark:bg-[#0C1122] text-slate-900 dark:text-white">✦ Claude 3.7 Sonnet</option>
+              <option value="GPT-4o" className="bg-white dark:bg-[#0C1122] text-slate-900 dark:text-white">✦ GPT-4o</option>
+              <option value="DeepSeek R1" className="bg-white dark:bg-[#0C1122] text-slate-900 dark:text-white">✦ DeepSeek R1</option>
+              <option value="Gemini 2.0 Flash" className="bg-white dark:bg-[#0C1122] text-slate-900 dark:text-white">✦ Gemini 2.0 Flash</option>
             </select>
           </div>
 
@@ -320,12 +320,12 @@ export default function ForgePage() {
         <div className="lg:col-span-3 space-y-4">
           
           {/* The Living Agent Desk Card */}
-          <div className="glass-light-card rounded-2xl p-4 border border-slate-200/80 space-y-4 shadow-xs relative overflow-hidden">
-            <div className="flex items-center justify-between text-xs text-slate-400 font-mono pb-2 border-b border-slate-100">
-              <span className="font-semibold text-slate-600 uppercase tracking-wider text-[10px]">
+          <div className="p-4 rounded-2xl bg-white/90 dark:bg-[#0C1122]/75 backdrop-blur-xl border border-slate-200/80 dark:border-white/[0.08] space-y-4 shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-[0_10px_30px_rgba(0,0,0,0.35)] relative overflow-hidden">
+            <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono pb-2 border-b border-slate-200/80 dark:border-white/[0.06]">
+              <span className="font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[10px]">
                 Co-Pilot Persona
               </span>
-              <span className="flex items-center gap-1 text-emerald-600">
+              <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 Live Desk
               </span>
@@ -334,7 +334,7 @@ export default function ForgePage() {
             {/* Agent Desk Stage */}
             <div className="flex flex-col items-center text-center space-y-2.5 py-2">
               <div className="relative">
-                <div className="p-1 rounded-2xl bg-white shadow-md border border-slate-200/80">
+                <div className="p-1 rounded-2xl bg-white dark:bg-[#07090E] shadow-xl border border-slate-200 dark:border-white/[0.12]">
                   <AgentAvatar
                     name="sol_architect"
                     size={72}
@@ -344,66 +344,66 @@ export default function ForgePage() {
                   />
                 </div>
                 {/* Status pill floating on avatar */}
-                <span className="absolute -bottom-2 inset-x-0 mx-auto w-max px-2.5 py-0.5 rounded-full bg-slate-900 text-white text-[9.5px] font-mono shadow-md border border-slate-700">
+                <span className="absolute -bottom-2 inset-x-0 mx-auto w-max px-2.5 py-0.5 rounded-full bg-slate-900 text-white text-[9.5px] font-mono shadow-md border border-white/20">
                   {activeAgentStatus === 'reasoning' ? 'Reasoning...' : 'Live Coding'}
                 </span>
               </div>
 
               <div className="pt-1">
-                <h3 className="text-sm font-bold text-slate-900">Sol (Systems Architect)</h3>
-                <p className="text-[11px] text-slate-400 font-mono">@sol_architect</p>
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white">Sol (Systems Architect)</h3>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">@sol_architect</p>
               </div>
 
-              <p className="text-[11.5px] text-slate-600 font-sans leading-relaxed px-1">
+              <p className="text-[11.5px] text-slate-600 dark:text-slate-400 font-sans leading-relaxed px-1">
                 Autonomously writing lockless Rust data structures and streaming benchmarks into Daytona.
               </p>
             </div>
 
             {/* Token Burn Telemetry */}
-            <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/70 text-[11px] font-mono space-y-1.5 text-slate-600">
+            <div className="p-2.5 rounded-xl bg-slate-50/80 dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/[0.08] text-[11px] font-mono space-y-1.5 text-slate-700 dark:text-slate-300">
               <div className="flex items-center justify-between">
-                <span className="text-slate-400">Tokens Burned:</span>
-                <span className="font-bold text-amber-600">✦ {tokensUsed.toLocaleString()}</span>
+                <span className="text-slate-500 dark:text-slate-400">Tokens Burned:</span>
+                <span className="font-bold text-amber-600 dark:text-amber-400">✦ {tokensUsed.toLocaleString()}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-slate-400">VM Latency:</span>
-                <span className="font-medium text-emerald-600">142ms (E2B)</span>
+                <span className="text-slate-500 dark:text-slate-400">VM Latency:</span>
+                <span className="font-medium text-emerald-600 dark:text-emerald-400">142ms (E2B)</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-slate-400">Active Branch:</span>
-                <span className="font-medium text-blue-600">git: main</span>
+                <span className="text-slate-500 dark:text-slate-400">Active Branch:</span>
+                <span className="font-medium text-blue-600 dark:text-cyan-400">git: main</span>
               </div>
             </div>
           </div>
 
           {/* Nexa Paradigm Cognitive Load Gauges */}
-          <div className="glass-light-card rounded-2xl p-4 border border-slate-200/80 space-y-3 shadow-xs">
-            <div className="flex items-center justify-between pb-2 border-b border-slate-100">
-              <span className="text-[10px] uppercase font-mono font-bold tracking-wider text-slate-400">
+          <div className="p-4 rounded-2xl bg-white/90 dark:bg-[#0C1122]/75 backdrop-blur-xl border border-slate-200/80 dark:border-white/[0.08] space-y-3 shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-200/80 dark:border-white/[0.06]">
+              <span className="text-[10px] uppercase font-mono font-bold tracking-wider text-slate-500 dark:text-slate-400">
                 Cognitive Topology
               </span>
-              <Activity className="w-3.5 h-3.5 text-cyan-500" />
+              <Activity className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400" />
             </div>
 
             <div className="space-y-1">
               <CognitiveGauge
                 label="Reflection Depth"
                 percentage={reflection}
-                accent="#0284C7"
+                accent="#38BDF8"
                 sublabel="Chain-of-thought"
                 size={42}
               />
               <CognitiveGauge
                 label="Memory & Context"
                 percentage={memory}
-                accent="#7C3AED"
+                accent="#A855F7"
                 sublabel="128K window"
                 size={42}
               />
               <CognitiveGauge
                 label="Intelligence Tier"
                 percentage={intelligence}
-                accent="#059669"
+                accent="#10B981"
                 sublabel="Formal logic"
                 size={42}
               />
@@ -411,12 +411,12 @@ export default function ForgePage() {
           </div>
 
           {/* File Explorer Tree */}
-          <div className="glass-light-card rounded-2xl p-4 border border-slate-200/80 space-y-3 shadow-xs">
-            <div className="flex items-center justify-between pb-2 border-b border-slate-100 text-xs font-mono text-slate-400">
-              <span className="font-semibold text-slate-600 uppercase tracking-wider text-[10px]">
+          <div className="p-4 rounded-2xl bg-white/90 dark:bg-[#0C1122]/75 backdrop-blur-xl border border-slate-200/80 dark:border-white/[0.08] space-y-3 shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-200/80 dark:border-white/[0.06] text-xs font-mono text-slate-500 dark:text-slate-400">
+              <span className="font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[10px]">
                 Workspace Files
               </span>
-              <span className="text-[10px] text-blue-600 font-bold">Rust / WASM</span>
+              <span className="text-[10px] text-blue-600 dark:text-cyan-400 font-bold">Rust / WASM</span>
             </div>
 
             <div className="space-y-1 text-xs font-mono">
@@ -429,15 +429,15 @@ export default function ForgePage() {
                     className={cn(
                       'w-full flex items-center justify-between px-3 py-2 rounded-xl text-left transition-all',
                       isSelected
-                        ? 'bg-blue-50 text-blue-700 border border-blue-200/80 font-bold shadow-2xs'
-                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70'
+                        ? 'bg-blue-50 dark:bg-blue-600/20 text-blue-700 dark:text-cyan-300 border border-blue-200 dark:border-cyan-500/30 font-bold shadow-xs'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.04]'
                     )}
                   >
                     <div className="flex items-center gap-2 truncate">
-                      <FileCode className={cn('w-3.5 h-3.5 shrink-0', isSelected ? 'text-blue-600' : 'text-slate-400')} />
+                      <FileCode className={cn('w-3.5 h-3.5 shrink-0', isSelected ? 'text-blue-600 dark:text-cyan-400' : 'text-slate-400 dark:text-slate-500')} />
                       <span className="truncate">{file.name}</span>
                     </div>
-                    <span className="text-[10px] text-slate-400 font-normal shrink-0">{file.size}</span>
+                    <span className="text-[10px] text-slate-400 dark:text-slate-500 font-normal shrink-0">{file.size}</span>
                   </button>
                 );
               })}
@@ -449,10 +449,10 @@ export default function ForgePage() {
         <div className="lg:col-span-9 space-y-4">
           
           {/* Editor Container */}
-          <div className="glass-light-card rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs flex flex-col">
+          <div className="rounded-2xl border border-slate-200/80 dark:border-white/[0.08] bg-slate-950 dark:bg-[#070A11] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] dark:shadow-[0_10px_30px_rgba(0,0,0,0.4)] flex flex-col">
             
             {/* Tab Bar Header */}
-            <div className="bg-slate-100/80 border-b border-slate-200/80 px-3 pt-2 flex items-center justify-between overflow-x-auto scrollbar-none">
+            <div className="bg-slate-100 dark:bg-[#090D18] border-b border-slate-200/80 dark:border-white/[0.08] px-3 pt-2 flex items-center justify-between overflow-x-auto scrollbar-none">
               <div className="flex items-center gap-1.5">
                 {openTabs.map((tabPath) => {
                   const file = files.find((f) => f.path === tabPath);
@@ -464,15 +464,15 @@ export default function ForgePage() {
                       className={cn(
                         'flex items-center gap-2 px-3.5 py-1.5 rounded-t-xl text-xs font-mono transition-all cursor-pointer select-none',
                         isSelected
-                          ? 'bg-white text-slate-900 font-bold border-t-2 border-t-blue-600 shadow-2xs'
-                          : 'text-slate-500 hover:text-slate-800 hover:bg-white/50'
+                          ? 'bg-slate-950 dark:bg-[#070A11] text-white font-bold border-t-2 border-t-blue-500 dark:border-t-cyan-400 shadow-xs'
+                          : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-200/60 dark:hover:bg-white/[0.04]'
                       )}
                     >
-                      <FileCode className="w-3.5 h-3.5 text-blue-500" />
+                      <FileCode className="w-3.5 h-3.5 text-blue-500 dark:text-cyan-400" />
                       <span>{file?.name || tabPath}</span>
                       <button
                         onClick={(e) => handleCloseTab(tabPath, e)}
-                        className="text-slate-400 hover:text-slate-700 p-0.5 rounded-md hover:bg-slate-200/50"
+                        className="text-slate-400 hover:text-white p-0.5 rounded-md hover:bg-white/10"
                       >
                         ×
                       </button>
@@ -482,22 +482,22 @@ export default function ForgePage() {
               </div>
 
               {/* Utility actions */}
-              <div className="flex items-center gap-2 pb-1.5 text-xs text-slate-500 font-mono">
+              <div className="flex items-center gap-2 pb-1.5 text-xs text-slate-500 dark:text-slate-400 font-mono">
                 <button
                   onClick={handleCopyCode}
-                  className="p-1.5 rounded-lg hover:bg-white text-slate-500 hover:text-slate-800 transition-colors"
+                  className="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-white/10 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
                   title="Copy Code"
                 >
-                  {isCopied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                  {isCopied ? <Check className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
                 </button>
-                <span className="text-[10px] text-slate-400">UTF-8</span>
+                <span className="text-[10px] text-slate-400 dark:text-slate-500">UTF-8</span>
               </div>
             </div>
 
             {/* Code Editor Body */}
-            <div className="relative flex min-h-[380px] max-h-[500px] bg-white">
+            <div className="relative flex min-h-[380px] max-h-[500px] bg-slate-950 dark:bg-[#070A11]">
               {/* Line Numbers Gutter */}
-              <div className="w-12 py-4 select-none bg-slate-50/60 border-r border-slate-100 text-right pr-3 font-mono text-[11px] text-slate-300 space-y-1">
+              <div className="w-12 py-4 select-none bg-slate-900/90 dark:bg-[#090D18]/70 border-r border-slate-800 dark:border-white/[0.06] text-right pr-3 font-mono text-[11px] text-slate-500 space-y-1">
                 {code.split('\n').map((_, index) => (
                   <div key={index} className="leading-5">
                     {index + 1}
@@ -509,20 +509,20 @@ export default function ForgePage() {
               <textarea
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
-                className="flex-1 w-full bg-white text-slate-800 p-4 font-mono text-xs focus:outline-none resize-none leading-5 selection:bg-blue-100"
+                className="flex-1 w-full bg-transparent text-slate-200 p-4 font-mono text-xs focus:outline-none resize-none leading-5 selection:bg-blue-500/30"
                 spellCheck={false}
               />
             </div>
 
             {/* Git Commit & Deploy Sub-bar */}
-            <div className="px-4 py-2.5 bg-slate-50/80 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono">
+            <div className="px-4 py-2.5 bg-slate-100 dark:bg-[#090D18] border-t border-slate-200/80 dark:border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono">
               <div className="flex items-center gap-2 w-full sm:w-auto">
-                <GitBranch className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                <GitBranch className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400 shrink-0" />
                 <input
                   type="text"
                   value={commitMessage}
                   onChange={(e) => setCommitMessage(e.target.value)}
-                  className="bg-white border border-slate-200/80 rounded-lg px-2.5 py-1 text-xs text-slate-700 w-full sm:w-80 focus:outline-none focus:border-blue-500 shadow-2xs"
+                  className="bg-white dark:bg-[#070A11] border border-slate-300 dark:border-white/[0.1] rounded-lg px-2.5 py-1 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 w-full sm:w-80 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400 shadow-inner"
                   placeholder="Commit message..."
                 />
               </div>
@@ -531,7 +531,7 @@ export default function ForgePage() {
                 <button
                   onClick={handleCommitDeploy}
                   disabled={isCommitting}
-                  className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-mono font-semibold transition-all active:scale-[0.98] disabled:opacity-50"
+                  className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-mono font-semibold transition-all active:scale-[0.98] disabled:opacity-50"
                 >
                   <GitCommit className={cn("w-3.5 h-3.5", isCommitting && "animate-spin")} />
                   <span>{isCommitting ? 'Deploying to Edge...' : 'Commit & Deploy Subdomain'}</span>
@@ -541,9 +541,9 @@ export default function ForgePage() {
           </div>
 
           {/* ─── Bottom Panel: Terminal, Tests, Live Preview, and Thought Trace ─── */}
-          <div className="glass-light-card rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs">
+          <div className="rounded-2xl border border-slate-200/80 dark:border-white/[0.08] bg-slate-950 dark:bg-[#070A11] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] dark:shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
             {/* Header Tabs */}
-            <div className="px-4 py-2 bg-slate-50 border-b border-slate-200/80 flex items-center justify-between text-xs font-mono">
+            <div className="px-4 py-2 bg-slate-100 dark:bg-[#090D18] border-b border-slate-200/80 dark:border-white/[0.08] flex items-center justify-between text-xs font-mono">
               <div className="flex items-center gap-2">
                 {[
                   { id: 'terminal', label: 'MicroVM Terminal' },
@@ -557,8 +557,8 @@ export default function ForgePage() {
                     className={cn(
                       'px-3 py-1 rounded-lg font-semibold transition-all',
                       activeBottomTab === tab.id
-                        ? 'bg-white text-slate-900 shadow-2xs'
-                        : 'text-slate-500 hover:text-slate-800'
+                        ? 'bg-white dark:bg-white/[0.1] text-blue-600 dark:text-cyan-400 shadow-xs'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                     )}
                   >
                     {tab.label}
@@ -568,7 +568,7 @@ export default function ForgePage() {
 
               <button
                 onClick={() => setTerminalLogs([])}
-                className="text-[10.5px] text-slate-400 hover:text-slate-700 transition-colors"
+                className="text-[10.5px] text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
               >
                 Clear Output
               </button>
@@ -576,14 +576,14 @@ export default function ForgePage() {
 
             {/* Tab 1: Terminal Stream */}
             {activeBottomTab === 'terminal' && (
-              <div className="h-48 p-3.5 overflow-y-auto font-mono text-xs space-y-1.5 text-slate-700 bg-slate-50/40">
+              <div className="h-48 p-3.5 overflow-y-auto font-mono text-xs space-y-1.5 text-slate-300 bg-slate-950 dark:bg-[#070A11]">
                 {terminalLogs.map((log, i) => (
                   <div key={i} className="leading-snug flex items-start gap-1.5">
-                    <span className="text-blue-600 font-bold shrink-0">$</span>
+                    <span className="text-cyan-400 font-bold shrink-0">$</span>
                     <span className={cn(
-                      log.includes('error') ? 'text-rose-600 font-bold' :
-                      log.includes('finished') || log.includes('passed') ? 'text-emerald-700 font-semibold' :
-                      'text-slate-700'
+                      log.includes('error') ? 'text-rose-400 font-bold' :
+                      log.includes('finished') || log.includes('passed') ? 'text-emerald-400 font-semibold' :
+                      'text-slate-300'
                     )}>
                       {log}
                     </span>
@@ -594,10 +594,10 @@ export default function ForgePage() {
 
             {/* Tab 2: Invariant Tests */}
             {activeBottomTab === 'tests' && (
-              <div className="h-48 p-4 overflow-y-auto space-y-2 text-xs font-mono bg-white">
-                <div className="flex items-center justify-between p-2 rounded-xl bg-emerald-50 border border-emerald-200/70 text-emerald-800">
+              <div className="h-48 p-4 overflow-y-auto space-y-2 text-xs font-mono bg-slate-950 dark:bg-[#070A11]">
+                <div className="flex items-center justify-between p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                     <span className="font-bold">Formal Invariants Verification: 18 / 18 PASS</span>
                   </div>
                   <span>Elapsed: 38ms</span>
@@ -610,9 +610,9 @@ export default function ForgePage() {
                     { name: 'test_zero_copy_mmap_eviction', time: '8.4ms', status: 'PASS' },
                     { name: 'test_wasm_memory_safety_sandbox', time: '6.1ms', status: 'PASS' },
                   ].map((t) => (
-                    <div key={t.name} className="flex items-center justify-between p-2 rounded-lg bg-slate-50 border border-slate-200/60">
-                      <span className="text-slate-700 truncate">{t.name}</span>
-                      <span className="text-emerald-600 font-bold">{t.time}</span>
+                    <div key={t.name} className="flex items-center justify-between p-2 rounded-lg bg-white/[0.03] border border-white/[0.08]">
+                      <span className="text-slate-300 truncate">{t.name}</span>
+                      <span className="text-emerald-400 font-bold">{t.time}</span>
                     </div>
                   ))}
                 </div>
@@ -621,28 +621,28 @@ export default function ForgePage() {
 
             {/* Tab 3: Live Subdomain Preview */}
             {activeBottomTab === 'preview' && (
-              <div className="h-48 p-4 flex flex-col justify-between bg-slate-50/50">
-                <div className="flex items-center justify-between pb-2 border-b border-slate-200/60 text-xs font-mono text-slate-500">
+              <div className="h-48 p-4 flex flex-col justify-between bg-slate-950 dark:bg-[#070A11]">
+                <div className="flex items-center justify-between pb-2 border-b border-white/[0.06] text-xs font-mono text-slate-400">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="font-semibold text-slate-800">warp-kv.agentx.dev</span>
+                    <span className="font-semibold text-white">warp-kv.agentx.dev</span>
                   </div>
                   <a
                     href="https://warp-kv.agentx.dev"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-1 text-blue-600 hover:underline"
+                    className="flex items-center gap-1 text-cyan-400 hover:underline"
                   >
                     Open Fullscreen <ExternalLink className="w-3 h-3" />
                   </a>
                 </div>
 
-                <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-2 text-center my-auto">
-                  <h4 className="text-xs font-bold text-slate-900 font-mono">WarpKV In-Browser WASM Playground</h4>
-                  <p className="text-[11px] text-slate-500">
+                <div className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.08] shadow-inner space-y-2 text-center my-auto">
+                  <h4 className="text-xs font-bold text-white font-mono">WarpKV In-Browser WASM Playground</h4>
+                  <p className="text-[11px] text-slate-400">
                     Compiled directly from Sol&apos;s latest commit into WebAssembly linear memory.
                   </p>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-[10.5px] font-mono">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-[10.5px] font-mono">
                     <span>QPS Benchmark: 4,210,000 ops/sec</span>
                   </div>
                 </div>
@@ -651,8 +651,8 @@ export default function ForgePage() {
 
             {/* Tab 4: Thought Trace */}
             {activeBottomTab === 'thought' && (
-              <div className="h-48 p-4 overflow-y-auto space-y-2 text-xs font-sans text-slate-600 bg-white leading-relaxed">
-                <div className="flex items-center gap-2 text-blue-600 font-mono font-semibold text-[11px]">
+              <div className="h-48 p-4 overflow-y-auto space-y-2 text-xs font-sans text-slate-300 bg-slate-950 dark:bg-[#070A11] leading-relaxed">
+                <div className="flex items-center gap-2 text-cyan-400 font-mono font-semibold text-[11px]">
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>Agent Reasoning Trace (Sol / Claude 3.7 Sonnet)</span>
                 </div>
